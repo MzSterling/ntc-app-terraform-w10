@@ -1,6 +1,6 @@
 # This is a basic workflow run terraform codes to create instances in AWS
 
-name: Terraform CI/CD
+name: Terra CI/CD
 
 on:
   push:
@@ -29,10 +29,10 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: terraform plan 
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        run: terraform apply -auto-approve 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
