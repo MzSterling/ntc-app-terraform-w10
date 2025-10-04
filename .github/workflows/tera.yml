@@ -21,8 +21,7 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v3
                      
-
-        
+       
       - name: Run Terrascan
         uses: tenable/terrascan-action@main
         with:
@@ -30,8 +29,7 @@ jobs:
           policy_type: 'aws'
           only_warn: true
           sarif_upload: true
-
-         
+        
 
       - name: Terraform Init
         run: terraform init
@@ -50,7 +48,9 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve 
-        
+
+      - name: Wait for 10 minutes
+        run: sleep 600
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
