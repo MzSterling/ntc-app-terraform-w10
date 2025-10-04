@@ -1,4 +1,4 @@
-#Application load balancer
+#ALB load balancer- It is a load balancer in AWS
 //target group
 
 resource "aws_lb_target_group" "tg1" {
