@@ -26,6 +26,11 @@ jobs:
           only_warn: true
           sarif_upload: true
 
+          env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_DEFAULT_REGION: us-east-1
+
       - name: Terraform Init
         run: terraform init
 
@@ -43,11 +48,7 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve 
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-          
+        
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
